@@ -4,12 +4,40 @@ use std::fmt;
 
 #[derive(Debug)]
 pub struct SkeletonCode {
-    original: String,
-    skeleton_code: String,
-    solution_code: String,
+    pub original: String,
+    pub skeleton_code: String,
+    pub solution_code: String,
 }
 
 impl SkeletonCode {
+    /// parses a code sample using provided delimeters into skeleton and solution code
+    ///
+    /// # Arguments
+    ///
+    /// * `delimeters` - customizable delimiters to segregate code into different sections
+    /// * `contents` - the contents of the file to parse
+    /// # Example
+    ///
+    /// ```
+    /// use replicatEdu_lib_skeleton_parser::{SkeletonCode,SkeletonDelimiters};
+    /// use std::fs;
+    ///
+    /// let filename = "example/main.c";
+    /// 
+    /// let delims = SkeletonDelimiters {
+    ///     skeleton_tag: "///!_SKELETON".to_string(),
+    ///     skeleton_delimiter: "//!_ ".to_string(),
+    ///     solution_tag: "///!_SOLUTION".to_string(),
+    /// };
+    /// 
+    /// let contents = match fs::read_to_string(&filename) {
+    ///     Ok(contents) => contents,
+    ///     Err(_) => panic!("parsing error!"),
+    /// };
+    /// 
+    /// let parsed_code = SkeletonCode::new(delims, contents);
+    /// println!("{}", parsed_code.unwrap());
+    /// ```
     pub fn new(
         delimeters: SkeletonDelimiters,
         contents: String,
@@ -98,10 +126,32 @@ impl fmt::Display for SkeletonCode {
 
 #[derive(Debug)]
 pub struct SkeletonDelimiters {
-    skeleton_tag: String,
-    skeleton_delimiter: String,
-    solution_tag: String,
+    pub skeleton_tag: String,
+    pub skeleton_delimiter: String,
+    pub solution_tag: String,
 }
+
+/// returns a default representation of the delimiters
+///
+/// # Arguments
+///
+/// * `delimeters` - customizable delimiters to segregate code into different sections
+/// * `contents` - the contents of the file to parse
+/// # Example
+///
+/// ```
+/// use replicatEdu_lib_skeleton_parser::{SkeletonCode,return_default_delim};
+/// use std::fs;
+///
+/// let filename = "example/main.c";
+/// let contents = match fs::read_to_string(&filename) {
+///     Ok(contents) => contents,
+///     Err(_) => panic!("parsing error!"),
+/// };
+/// let delims = return_default_delim();
+/// let parsed_code = SkeletonCode::new(delims, contents);
+/// println!("{}", parsed_code.unwrap());
+/// ```
 
 pub fn return_default_delim() -> SkeletonDelimiters {
     SkeletonDelimiters {
