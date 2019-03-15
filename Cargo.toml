@@ -1,5 +1,5 @@
 [package]
-name = "replicatEdu_lib_skeleton-parser"
+name = "skeleton_parser"
 version = "0.1.0"
 authors = ["alex <hortinstein@gmail.com>"]
 edition = "2018"
