@@ -107,13 +107,13 @@ impl SkeletonCode {
         }
         Ok(skelly_code)
     }
-    fn GetOriginal(self)->String {
+    pub fn GetOriginal(self)->String {
         self.original.clone()
     }
-    fn GetSkeleton(self)->String {
+    pub fn GetSkeleton(self)->String {
         self.skeleton_code.clone()
     }
-    fn GetSolution(self)->String {
+    pub fn GetSolution(self)->String {
         self.solution_code.clone()
     }
 }
