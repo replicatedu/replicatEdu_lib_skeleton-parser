@@ -19,7 +19,7 @@ impl SkeletonCode {
     /// # Example
     ///
     /// ```
-    /// use replicatEdu_lib_skeleton_parser::{SkeletonCode,SkeletonDelimiters};
+    /// use skeleton_parser::{SkeletonCode,SkeletonDelimiters};
     /// use std::fs;
     ///
     /// let filename = "example/main.c";
@@ -149,7 +149,7 @@ pub struct SkeletonDelimiters {
 /// # Example
 ///
 /// ```
-/// use replicatEdu_lib_skeleton_parser::{SkeletonCode,return_default_delim};
+/// use skeleton_parser::{SkeletonCode,return_default_delim};
 /// use std::fs;
 ///
 /// let filename = "example/main.c";
